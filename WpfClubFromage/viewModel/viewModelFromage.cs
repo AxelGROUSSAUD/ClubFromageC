@@ -18,19 +18,36 @@ namespace WpfClubFromage.viewModel
         private ICommand updateCommand;
         private ObservableCollection<Pays> listPays;
         private Fromage monFromage = new Fromage(1,"Rebloch");
+        private Fromage selectedFromage = new Fromage();
+        private Fromage activeFromage = new Fromage();
 
         //déclaration des listes...à compléter avec les fromages
         public ObservableCollection<Pays> ListPays { get => listPays; set => listPays = value; }
+
         //déclaration des propriétés avec OnPropertyChanged("nom_propriété_bindée")
         //par exemple...
-        public string Name
+        public string SelectedFromage
         {
-            get => monFromage.Name;
+            get => selectedFromage.Name;
             set
             {
-                if (monFromage.Name != value)
+                if (selectedFromage.Name != value)
                 {
-                    monFromage.Name = value;
+                    selectedFromage.Name = value;
+                    //création d'un évènement si la propriété Name (bindée dans le XAML) change
+                    OnPropertyChanged("Name");
+                    selectedFromage = activeFromage;
+                }
+            }
+        }
+        public string ActiveFromage
+        {
+            get => activeFromage.Name;
+            set
+            {
+                if (activeFromage.Name != value)
+                {
+                    activeFromage.Name = value;
                     //création d'un évènement si la propriété Name (bindée dans le XAML) change
                     OnPropertyChanged("Name");
                 }

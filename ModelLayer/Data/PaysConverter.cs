@@ -14,7 +14,7 @@ namespace ModelLayer.Data
     {
         public override object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData)
         {
-            Dbal thedbal = new Dbal("dbclubfromage");
+            Dbal thedbal = new Dbal("club_fromage");
             Pays convertedPays = new Pays();
             DaoPays myDaoPays = new DaoPays(thedbal);
             convertedPays = myDaoPays.SelectByName(text);
