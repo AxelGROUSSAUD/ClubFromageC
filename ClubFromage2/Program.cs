@@ -21,26 +21,26 @@ namespace ClubFromage
         {
             Console.WriteLine("Hello World!");
 
-            mydbal = new Dbal("dbclubfromage");
+            mydbal = new Dbal("club_fromage");
             myPays = new Pays();
             myDaoPays = new DaoPays(mydbal);
              
             //myDaoPays.Insert(myPays);
-            //myDaoPays.InsertFromCSV("C:\\Users\\ÉtienneBuffet\\Source\\Repos\\ClubFromage\\coucheModel\\pays.csv");
+            myDaoPays.InsertFromCSV("C:\\Users\\SIO2\\source\\repos\\ClubFromageTemplate\\ModelLayer\\import files\\pays.csv");
             //myFromage = new Fromage(2,"Reblochon",default,myPays,default);
             myDaoFromage = new DaoFromage(mydbal, myDaoPays);
             //myDaoFromage.Insert(myFromage);
-            //myDaoFromage.InsertFromCSV("C:\\Users\\ÉtienneBuffet\\Source\\Repos\\ClubFromage\\coucheModel\\tableauNomDep.csv");
+            myDaoFromage.InsertFromCSV("C:\\Users\\SIO2\\source\\repos\\ClubFromageTemplate\\ModelLayer\\import files\\tableauNomDep.csv");
             //List<Fromage> myFromages = myDaoFromage.SelectAll();
             //foreach (Fromage f in myFromages)
             //{
             //    Console.WriteLine(f.Name);
             //}
-            List <Pays> listPays = myDaoPays.SelectAll();
-            foreach (Pays p in listPays)
-            {
-                Console.WriteLine(p.Name);
-            }
+            //List <Pays> listPays = myDaoPays.SelectAll();
+            //foreach (Pays p in listPays)
+            //{
+            //    Console.WriteLine(p.Name);
+            //}
             //string fromton = "Abondance";
             //Fromage myFromage = myDaoFromage.SelectByName(fromton);
             ////myFromage.Name = "Reblochon";
