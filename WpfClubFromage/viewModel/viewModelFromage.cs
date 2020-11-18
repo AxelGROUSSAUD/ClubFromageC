@@ -65,7 +65,17 @@ namespace WpfClubFromage.viewModel
         }
         public string Name
         {
-            get =>  activeFromage.Name;
+            get  {
+                if (activeFromage != null)
+                {
+                    return activeFromage.Name;
+                }
+                else
+                {
+                    activeFromage = ListFromages[0];
+                    return activeFromage.Name;
+                }
+            }
             set
             {
                 if (activeFromage.Name != value)
