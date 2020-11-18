@@ -29,7 +29,7 @@ namespace WpfClubFromage
         {
             InitializeComponent();
             //on associe la grid principal mainGrid du XAML en initialisant son DataContext avec un objet viewModelFromage
-            mainGrid.DataContext = new viewModel.viewModelFromage(thedaopays);            
+            mainGrid.DataContext = new viewModel.viewModelFromage(thedaopays,thedaofromage);            
             
         }
     }

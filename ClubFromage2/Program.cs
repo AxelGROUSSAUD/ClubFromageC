@@ -26,7 +26,7 @@ namespace ClubFromage
             myDaoPays = new DaoPays(mydbal);
              
             //myDaoPays.Insert(myPays);
-            myDaoPays.InsertFromCSV("C:\\Users\\SIO2\\source\\repos\\ClubFromageTemplate\\ModelLayer\\import files\\pays.csv");
+            //myDaoPays.InsertFromCSV("C:\\Users\\SIO2\\source\\repos\\ClubFromageTemplate\\ModelLayer\\import files\\pays.csv");
             //myFromage = new Fromage(2,"Reblochon",default,myPays,default);
             myDaoFromage = new DaoFromage(mydbal, myDaoPays);
             //myDaoFromage.Insert(myFromage);

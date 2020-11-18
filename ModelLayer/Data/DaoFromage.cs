@@ -96,6 +96,11 @@ namespace ModelLayer.Data
             Pays myPays = this.theDaoPays.SelectById((int)tableFromage.Rows[0]["pays_origine_id"]);
             return new Fromage((int)tableFromage.Rows[0]["id"], (string)tableFromage.Rows[0]["name"], (DateTime)tableFromage.Rows[0]["creation"], myPays, (string)tableFromage.Rows[0]["image"]);
         }
+        public void Delete(Fromage UnFromage)
+        {
+            thedbal.Delete("Fromage where id = " + UnFromage.Id + " ;");
+
+        }
     }
 }
 

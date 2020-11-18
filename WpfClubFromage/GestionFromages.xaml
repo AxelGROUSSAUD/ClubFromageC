@@ -34,7 +34,9 @@
             <DatePicker x:Name="dateCreation" SelectedDate="{Binding Creation}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10"/>
             <Label Content="Image du fromage" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
             <Image x:Name="imageFromage" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
-            <Button x:Name="updateFromage" Content="Mise à jour" Command="{Binding UpdateCommand}" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="10"/>
+            <Button x:Name="updateFromage" Content="Mise à jour" Command="{Binding UpdateCommand}" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch" Margin="10"/>
+            <Button x:Name="AddFromage" Content="Ajouter" Command="{Binding AddCommand}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Margin="10" Width="110"/>
+            <Button x:Name="DeleteFromage" Content="Supprimer" Command="{Binding DeleteCommand}" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" Margin="10" Width="110"/>
         </Grid>
     </Grid>
 </Window>
