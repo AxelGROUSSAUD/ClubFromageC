@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using ModelLayer.Business;
 using ModelLayer.Data;
 using WpfClubFromage.viewModel;
 
 namespace WpfClubFromage.viewModel
 {
-    class viewModelFromage : viewModelBase
+    class viewModelFromage : viewModelBase 
     {
         //déclaration des attributs ...à compléter
         private DaoPays vmDaoPays;
@@ -21,7 +23,7 @@ namespace WpfClubFromage.viewModel
         private ICommand deleteCommand;
         private ObservableCollection<Pays> listPays;
         private ObservableCollection<Fromage> listFromages;
-        
+        private BitmapSource _bitmapSource;
         private Fromage selectedFromage = new Fromage();
         private Fromage activeFromage = new Fromage();
 
@@ -63,6 +65,7 @@ namespace WpfClubFromage.viewModel
                 }
             }
         }
+        
         public string Name
         {
             get  {
@@ -134,6 +137,7 @@ namespace WpfClubFromage.viewModel
                 
 
             }
+            
         }
 
         //Méthode appelée au click du bouton UpdateCommand
@@ -193,6 +197,7 @@ namespace WpfClubFromage.viewModel
         {
             vmDaoFromage.Delete(activeFromage);
             listFromages.Remove(activeFromage);
+            
         }
     }
 }
