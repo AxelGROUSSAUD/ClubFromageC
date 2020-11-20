@@ -13,7 +13,7 @@ using WpfClubFromage.viewModel;
 
 namespace WpfClubFromage.viewModel
 {
-    class viewModelFromage : viewModelBase 
+    class viewModelFromage : viewModelBase
     {
         //déclaration des attributs ...à compléter
         private DaoPays vmDaoPays;
@@ -23,22 +23,22 @@ namespace WpfClubFromage.viewModel
         private ICommand deleteCommand;
         private ObservableCollection<Pays> listPays;
         private ObservableCollection<Fromage> listFromages;
-        private BitmapSource _bitmapSource;
+
         private Fromage selectedFromage = new Fromage();
         private Fromage activeFromage = new Fromage();
 
         //déclaration des listes...à compléter avec les fromages
         public ObservableCollection<Pays> ListPays { get => listPays; set => listPays = value; }
         public ObservableCollection<Fromage> ListFromages { get => listFromages; set => listFromages = value; }
-       
 
-        
+
+
         //déclaration des propriétés avec OnPropertyChanged("nom_propriété_bindée")
         //par exemple...
         public Fromage SelectedFromage
         {
             get => selectedFromage;
-            
+
             set
             {
                 if (selectedFromage != value)
@@ -47,6 +47,7 @@ namespace WpfClubFromage.viewModel
                     //création d'un évènement si la propriété Name (bindée dans le XAML) change
                     OnPropertyChanged("SelectedFromage");
                     ActiveFromage = selectedFromage;
+
                 }
             }
         }
@@ -56,7 +57,7 @@ namespace WpfClubFromage.viewModel
             get => activeFromage;
             set
             {
-                if(activeFromage != value)
+                if (activeFromage != value)
                 {
                     activeFromage = value;
                     OnPropertyChanged("Name");
@@ -65,10 +66,12 @@ namespace WpfClubFromage.viewModel
                 }
             }
         }
-        
+
+
         public string Name
         {
-            get  {
+            get
+            {
                 if (activeFromage != null)
                 {
                     return activeFromage.Name;
@@ -95,7 +98,7 @@ namespace WpfClubFromage.viewModel
             get => activeFromage.Creation;
             set
             {
-                if(activeFromage.Creation != value)
+                if (activeFromage.Creation != value)
                 {
                     activeFromage.Creation = value;
                     OnPropertyChanged("Creation");
@@ -108,14 +111,16 @@ namespace WpfClubFromage.viewModel
             get => activeFromage.Origin;
             set
             {
-                if(activeFromage.Origin!= value)
+                if (activeFromage.Origin != value)
                 {
                     activeFromage.Origin = value;
                     OnPropertyChanged("Origin");
                 }
-                
+
             }
         }
+
+
 
         //déclaration du contructeur de viewModelFromage
         public viewModelFromage(DaoPays thedaopays, DaoFromage thedaofromage)
@@ -127,17 +132,17 @@ namespace WpfClubFromage.viewModel
             foreach (Fromage F in listFromages)
             {
                 int n = 0;
-                while(F.Origin.Name != listPays[n].Name)
+                while (F.Origin.Name != listPays[n].Name)
                 {
                     n = n + 1;
                 }
-                
-                    F.Origin = listPays[n];
-                    
-                
+
+                F.Origin = listPays[n];
+
+
 
             }
-            
+
         }
 
         //Méthode appelée au click du bouton UpdateCommand
@@ -184,20 +189,29 @@ namespace WpfClubFromage.viewModel
         private void UpdateFromage()
         {
             //code du bouton - à coder
+            Fromage backup = new Fromage();
+            backup = activeFromage;
+            int position;
             vmDaoFromage.Update(activeFromage);
-            
-            
+            position = listFromages.IndexOf(activeFromage);
+            listFromages.Insert(position, activeFromage);
+            listFromages.RemoveAt(position + 1);
+            selectedFromage = backup;
+
         }
         private void AddFromage()
         {
+            //List<int> listeId = new List<int>();
+            //foreach(f)
             vmDaoFromage.Insert(activeFromage);
             listFromages.Add(activeFromage);
+
         }
         private void DeleteFromage()
         {
             vmDaoFromage.Delete(activeFromage);
             listFromages.Remove(activeFromage);
-            
+
         }
     }
 }
